@@ -15,7 +15,7 @@ const countdownInterval = setInterval(() => {
 
     if (distance < 0) {
         clearInterval(countdownInterval);
-        countdownElement.innerHTML = "It's Ananja's Birthday!";
+        countdownElement.innerHTML = "It's Your Birthday!";
         document.getElementById('surpriseMessage').classList.remove('hidden');
     }
 }, 1000);
