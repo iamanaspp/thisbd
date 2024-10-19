@@ -26,7 +26,7 @@ body {
     background: rgba(255, 255, 255, 0.85);
     padding: 40px 60px;
     border-radius: 20px;
-    border-top: 500px solid #ff6f61; /* Add border to the top of the container */
+    border-top: 650px solid #ff6f61; /* Add border to the top of the container */
     border-left: 2px solid #ff6f61;  /* Optionally, you can add left and right borders */
     border-right: 2px solid #ff6f61;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
