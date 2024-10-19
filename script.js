@@ -1,5 +1,5 @@
 // Countdown Timer
-const birthdayDate = new Date('October 20, 2024 00:00:00').getTime();
+const birthdayDate = new Date('June 20, 2024 00:00:00').getTime();
 const countdownElement = document.getElementById('countdown');
 
 const countdownInterval = setInterval(() => {
