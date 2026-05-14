@@ -1,88 +1,24 @@
-// Countdown Target Date
-const targetDate = new Date("May 20, 2026 00:00:00").getTime();
+const birthdayDate = new Date('October 20, 2024 00:00:00').getTime();
+const countdownElement = document.getElementById('countdown');
 
-const daysEl = document.getElementById("days");
-const hoursEl = document.getElementById("hours");
-const minutesEl = document.getElementById("minutes");
-const secondsEl = document.getElementById("seconds");
+const countdownInterval = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = birthdayDate - now;
 
-// Countdown Function
-setInterval(() => {
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  const now = new Date().getTime();
-  const distance = targetDate - now;
+    countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-
-  const hours = Math.floor(
-    (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  );
-
-  const minutes = Math.floor(
-    (distance % (1000 * 60 * 60)) / (1000 * 60)
-  );
-
-  const seconds = Math.floor(
-    (distance % (1000 * 60)) / 1000
-  );
-
-  daysEl.innerHTML = days;
-  hoursEl.innerHTML = hours;
-  minutesEl.innerHTML = minutes;
-  secondsEl.innerHTML = seconds;
-
+    if (distance < 0) {
+        clearInterval(countdownInterval);
+        countdownElement.innerHTML = "It's Your Birthday!";
+        document.getElementById('surpriseMessage').classList.remove('hidden');
+    }
 }, 1000);
 
-
-// Popup Elements
-const popup = document.getElementById("popup");
-
-const surpriseBtn = document.getElementById("surpriseBtn");
-
-const closePopup = document.getElementById("closePopup");
-
-
-// Open Popup
-surpriseBtn.addEventListener("click", () => {
-
-  popup.classList.add("active");
-
-  createHearts();
-
+document.getElementById('surpriseButton').addEventListener('click', function() {
+    window.location.href = 'surprise.html';
 });
-
-
-// Close Popup
-closePopup.addEventListener("click", () => {
-
-  popup.classList.remove("active");
-
-});
-
-
-// Floating Hearts Effect
-function createHearts(){
-
-  for(let i = 0; i < 40; i++){
-
-    const heart = document.createElement("div");
-
-    heart.classList.add("heart");
-
-    heart.innerHTML = "💖";
-
-    heart.style.left = Math.random() * 100 + "vw";
-
-    heart.style.fontSize = Math.random() * 25 + 20 + "px";
-
-    heart.style.animationDuration = Math.random() * 3 + 3 + "s";
-
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-
-      heart.remove();
-
-    }, 6000);
-  }
-}
